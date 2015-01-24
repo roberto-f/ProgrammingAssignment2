@@ -1,8 +1,11 @@
-## makeCacheMatrix function create a "special" matrix that cache his values
+## makeCacheMatrix function creates a "special" matrix that cache his values
 ## and the inverse matrix computed by means of cacheSolve function
+##
 ## Usage:
 ## z <- makeCacheMatrix(x) where x is a non singular square matrix
-## z$setCacheMatrix(y) permit to change the matrix values
+## function setCacheMatrix(y) on z permit to change the matrix values. If the
+## new matrix is equal to the old one, none is chandeg. If the new matrix id not equal 
+## to the old one, the cached inverse matrix is reset
 ## 
 ## You can test with:
 ## > z <- matrix(c(1, 4, 8, 1, 3,7,4,3,11), nrow=3, ncol=3)
@@ -41,6 +44,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 ## return the inverse of the "special matriz x created by makeCacheMatrix
 ## if already computed the cached inverse matrix is returned
+## Usage:
+## y <- cacheSolve(z) where z is a "special matrix" defined by
+##      makeCacheMatrix function
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
   xs <- x$getinv()
